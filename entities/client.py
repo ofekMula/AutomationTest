@@ -1,4 +1,10 @@
 class Client:
+    '''
+    Client object : holds information of client who connected to server:
+    - session id
+    - nickname
+    '''
+
     def __init__(self, session_id, nickname):
         self._session_id = session_id
         self._nickname = nickname

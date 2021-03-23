@@ -1,11 +1,29 @@
+      //defining constants
       const chatForm = document.getElementById('chat-form');
       const chatMessages = document.querySelector('.chat-messages')
       var users_list =["all users"];
 
+      // get client nickname
       const client_nickname = window.location.search.split('=')[1];
+
+      //connecting to server
       const socket = io("http://localhost:8080");
       socket.emit('nickname',client_nickname);
 
+      //events handling:
+
+      if(chatForm){
+          chatForm.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            //get message text
+            const msg = e.target.elements.msg.value;
+            var selected_user = document.getElementById("users").value;
+            //emitting message to the server
+            socket.emit('clientChatMessage',msg,selected_user);
+            e.target.elements.msg.value = ' ';
+            e.target.elements.msg.focus();
+          });
+      }
 
       socket.on('message',(sender_nickname,content,time)=> {
           const msg = formatMessage(time,sender_nickname,content)
@@ -34,6 +52,9 @@
             }
         }
       });
+
+      //helper functions
+
       function formatMessage(time,nickname,content){
         return (time + '  ' + nickname +': ' + content);
       }
@@ -45,15 +66,4 @@
          document.querySelector('.chat-messages').appendChild(div);
       }
 
-      if(chatForm){
-          chatForm.addEventListener('submit',(e)=>{
-            e.preventDefault();
-            //get message text
-            const msg = e.target.elements.msg.value;
-            var selected_user = document.getElementById("users").value;
-            //emitting message to the server
-            socket.emit('clientChatMessage',msg,selected_user);
-            e.target.elements.msg.value = ' ';
-            e.target.elements.msg.focus();
-          });
-      }
+

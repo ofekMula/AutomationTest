@@ -10,6 +10,7 @@
       const socket = io("http://localhost:8080");
       socket.emit('nickname',client_nickname);
 
+
       //events handling:
 
       if(chatForm){

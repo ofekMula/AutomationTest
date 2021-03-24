@@ -1,7 +1,6 @@
-      //defining constants
+      // constants
       const chatForm = document.getElementById('chat-form');
       const chatMessages = document.querySelector('.chat-messages')
-      var users_list =["all users"];
 
       // get client nickname
       const client_nickname = window.location.search.split('=')[1];

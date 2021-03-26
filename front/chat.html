@@ -12,13 +12,22 @@
         <script
       src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
       integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
-      crossorigin="anonymous"
-    ></script>
-     <h1 class="chat-header"> CHAT</h1><br><br>
+      crossorigin="anonymous">
+
+        </script>
+    <div class="container chat-container">
+        <main class="chat-main">
+        <form CLASS="form-leave-btn" action="index.html" style="float:right">
+            <button class="btn" > Leave chat!</button>
+         </form>
+        </main>
+     <h1 class="join-header">Live-Chat</h1>
+        <br><br>
     <div class="chat-messages">
 
     </div>
-    <div class="chat-form-container">
+    <div class="form-chat">
+        <main class="chat-main">
       <form id="chat-form">
         <input
           id="msg"
@@ -27,18 +36,14 @@
           required
           autocomplete="off"
         />
-          <button class="btn"> Send</button>
-          <label for="users">send message to:</label>
+          <button class="btn-send" > Send</button>
         <select name="users" id="users">
-          <option value="default">all users</option>
+          <option value="default" >all users</option>
         </select>
-
-
       </form>
+        </main>
     </div>
-          <form CLASS="form-leave-btn" action="index.html">
-        <button class="btn" > Leave chat!</button>
-      </form>
+        </div>
   <script src="js/utils.js"></script>
 </body>
 </html>

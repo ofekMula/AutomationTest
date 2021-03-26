@@ -61,7 +61,7 @@
 
       function sendMsg(message) {
         const div = document.createElement('div');
-        div.classList.add('container');
+        div.classList.add('container-msg');
          div.innerHTML += `<p>${message}</p>`;
          document.querySelector('.chat-messages').appendChild(div);
       }

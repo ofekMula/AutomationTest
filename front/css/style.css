@@ -1,7 +1,7 @@
 .chat-messages {
 	padding: 30px;
-	max-height: 500px;
-	max-width:500px;
+	max-height: 350px;
+	max-width:600px;
 	overflow-y: scroll;
 }
 
@@ -19,16 +19,23 @@
 
 .chat-header{
     padding-left:30px;
+    font-family: 'Roboto';
 }
 /* Chat containers */
 .container {
   border: 2px solid #dedede;
-  background-color: #f1f1f1;
+  background-color: #5F9F9F;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
 }
 
+.container-msg {
+  border: 2px solid #dedede;
+    border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
 /* Darker chat container */
 .darker {
   border-color: #ccc;
@@ -68,4 +75,197 @@
 .time-left {
   float: left;
   color: #999;
+}
+
+.div-chat{
+    float:center;
+    max-height: 500px;
+	max-width:500px;
+}
+
+.chat-main {
+	padding: 10px 10px;
+	background: var(--dark-color-b);
+}
+.chat-main p {
+	margin-bottom: 20px;
+}
+
+.chat-main .form-control {
+	margin-bottom: 20px;
+}
+
+.chat-main label {
+	display: inline-block;
+	float:left;
+}
+
+
+.chat-main input[type='text'] {
+	font-size: 15px;
+	padding: 5px;
+	height: 20px;
+	width: 40%;
+	background-color:#eee;
+	display:inline-block;
+	float:left;
+}
+.chat-main select {
+	font-size: 16px;
+	padding: 5px;
+	height: 30px;
+	width: 30%;
+	display:inline-block;
+	float:left;
+	margin-left:20px;
+}
+.chat-main .btn {
+	margin-top: 0px;
+	width: 100%;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:10px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+.chat-main .btn-send {
+	width: 15%;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:10px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+	display:inline-block;
+	float:left;
+}
+.btn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.btn:active {
+	position:relative;
+	top:1px;
+}
+/* Join Page */
+.join-container {
+	max-width: 400px;
+	max-height: 300px;
+	margin: 60px auto;
+
+}
+
+.join-header {
+	text-align: center;
+	padding: 10px;
+	background: var(--dark-color-a);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	color:#ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      font-display: swap
+}
+
+.join-main {
+	padding: 30px 40px;
+	background: var(--dark-color-b);
+}
+
+.join-main p {
+	margin-bottom: 20px;
+}
+
+.join-main .form-control {
+	margin-bottom: 20px;
+}
+
+.join-main label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.join-main input[type='text'] {
+	font-size: 20px;
+	padding: 5px;
+	height: 40px;
+	width: 95%;
+	background-color:#eee
+}
+
+.join-main select {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	width: 100%;
+}
+
+.join-main .btn {
+	margin-top: 20px;
+	width: 100%;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:10px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.btn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.btn:active {
+	position:relative;
+	top:1px;
+}
+
+}
+
+@media (max-width: 700px) {
+	.chat-main {
+		display: block;
+	}
+
+	.chat-sidebar {
+		display: none;
+	}
+}
+
+.chat-container {
+	width: 700px;
+    height: 600px;
+	margin: 60px auto;
+	position:relative;
+}
+
+.container .form-chat{
+    position:absolute;
+    bottom:0;
+    padding: 20px;
 }

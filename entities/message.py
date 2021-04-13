@@ -25,3 +25,6 @@ class Message:
     def make_msg_private(self):
        self._content += ' (private)'
 
+    def relate_msg_to_room(self,room_name):
+       self._content += '(' +room_name +')'
+

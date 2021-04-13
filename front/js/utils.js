@@ -3,12 +3,31 @@
       const chatMessages = document.querySelector('.chat-messages')
 
       // get client nickname
-      const client_nickname = window.location.search.split('=')[1];
+      const search_query_data = window.location.search.split('&');
+      const client_nickname = search_query_data[0].split('=')[1];
+      console.log(client_nickname);
+      const room_name = search_query_data[1].split('=')[1];
+
 
       //connecting to server
       const socket = io("http://localhost:8080");
       socket.emit('nickname',client_nickname);
+      socket.emit('join room',room_name);
 
+      //add rooms for combo box:
+      var reciever_cb = document.getElementById("users");
+      var option_A = create_option("room A");
+      var option_B = create_option("room B");
+      if (room_name == "A"){
+        reciever_cb.add(option_A);
+      }
+      else if(room_name =="B"){
+        reciever_cb.add(option_B);
+      }
+      else{
+        reciever_cb.add(option_A);
+        reciever_cb.add(option_B);
+      }
 
       //events handling:
 
@@ -64,6 +83,13 @@
         div.classList.add('container-msg');
          div.innerHTML += `<p>${message}</p>`;
          document.querySelector('.chat-messages').appendChild(div);
+      }
+
+      function create_option(option_value){
+        var option = document.createElement("option");
+        option.id = option_value;
+        option.text = option_value;
+        return option;
       }
 
 

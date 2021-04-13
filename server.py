@@ -9,13 +9,16 @@ SERVER_URL = 'localhost'
 PORT_NUM = 8080
 SERVER_NAME = 'Admin'
 DEFAULT_SELECTED_USER = 'default'
+ROOM_A = "A"
+ROOM_B = "B"
+dict_rooms = {"room A":ROOM_A,"room B":ROOM_B}
 # allow server to track all connected clients
 connected_clients = dict()
 
 # init socketio and avoid  cors
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio, static_files={
-    '/': {'content_type': 'text/html', 'filename': 'index.html'}
+    '': './front'
 })
 
 
@@ -23,6 +26,14 @@ app = socketio.WSGIApp(sio, static_files={
 def connect(sid, environ):
     connected_clients[sid] = Client(sid, DEFAULT_NICKNAME)
     print(sid, 'connected')
+
+@sio.on('join room')
+def assign_user_to_room(sid,room_name):
+    if room_name is ROOM_A or room_name is ROOM_B:
+        sio.enter_room(sid,room = room_name)
+    else:
+        sio.enter_room(sid,room = ROOM_A)
+        sio.enter_room(sid,room = ROOM_B)
 
 # for updating nickname of connected client - used after connection
 @sio.on('nickname')
@@ -51,6 +62,13 @@ def chat_message(sid, msg,selected_user):
             if sid is not reciever_client.get_client_sid():
                 sio.emit('message', (msg_chat.get_sender(), msg_chat.get_msg_content(), msg_chat.get_msg_time()),
                          room=sid)
+        else:
+            room_name = selected_user
+            msg_chat.relate_msg_to_room(room_name)
+            sio.emit('message', (msg_chat.get_sender(), msg_chat.get_msg_content(), msg_chat.get_msg_time()),
+                     room=dict_rooms[room_name])
+
+
 
 
 @sio.event
